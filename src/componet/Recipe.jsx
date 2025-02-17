@@ -1,0 +1,175 @@
+import { FaEdit, FaSearch, FaTrash } from "react-icons/fa";
+import { deleteRecipeAsync, getAllRecipesAsync } from "../Services/Action/Recipeaction";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { Button, Card, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import Header from "./Header";
+
+const Recipe = () => {
+  const [searchVal, setSearchVal] = useState("");
+  const [sortOption, setSortOption] = useState("all");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { recipes } = useSelector((state) => state.RecipeReduces);
+
+  useEffect(() => {
+    dispatch(getAllRecipesAsync());
+  }, [dispatch]);
+
+  // Effect to set filtered recipes after receiving new recipes
+  useEffect(() => {
+    let updatedRecipes = [...recipes];
+
+    // Apply category filter
+    if (categoryFilter !== "all") {
+      updatedRecipes = updatedRecipes.filter(
+        (recipe) => recipe.category.toLowerCase() === categoryFilter.toLowerCase()
+      );
+    }
+
+    // Apply search filter
+    if (searchVal) {
+      updatedRecipes = updatedRecipes.filter((recipe) => {
+        return (
+          recipe.title.toLowerCase().includes(searchVal.toLowerCase()) ||
+          recipe.date.toLowerCase().includes(searchVal.toLowerCase()) ||
+          recipe.description.toLowerCase().includes(searchVal.toLowerCase()) ||
+          recipe.category .toLowerCase().includes(searchVal.toLowerCase())
+        );
+      });
+    }
+
+    // Apply sorting after category and search filtering
+    handleSort(sortOption, updatedRecipes);
+
+    setFilteredRecipes(updatedRecipes);
+  }, [recipes, searchVal, categoryFilter, sortOption]);
+
+  const handleSort = (option, updatedRecipes) => {
+    let sortedRecipes = [...updatedRecipes];
+
+    if (option === "asctitle") {
+      sortedRecipes.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (option === "desctitle") {
+      sortedRecipes.sort((a, b) => b.title.localeCompare(a.title));
+    } else if (option === "ascdate") {
+      sortedRecipes.sort((a, b) => new Date(a.date) - new Date(b.date));
+    } else if (option === "descdate") {
+      sortedRecipes.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (option === "ascdescription") {
+      sortedRecipes.sort((a, b) => a.description.localeCompare(b.description));
+    } else if (option === "descdescription") {
+      sortedRecipes.sort((a, b) => b.description.localeCompare(a.description));
+    }
+
+    setFilteredRecipes(sortedRecipes);
+  };
+
+  const handleCategoryChange = (category) => {
+    setCategoryFilter(category);
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteRecipeAsync(id));
+  };
+
+  const handleEdit = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
+  return (
+    <>
+      <Header />
+      <div className="banner">
+        <div className="d-flex justify-content-center pt-3">
+          <input
+            type="text"
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
+            className="rounded-0"
+            placeholder="Search recipes"
+          />
+          <Button onClick={() => setSearchVal(searchVal)} className="rounded-0">
+            <FaSearch />
+          </Button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <select
+            className="form-select w-25"
+            onChange={(e) => {
+              setSortOption(e.target.value);
+            }}
+            value={sortOption}
+          >
+            <option value="all">All</option>
+            <option value="asctitle">Title (A-Z)</option>
+            <option value="desctitle">Title (Z-A)</option>
+            <option value="ascdate">Date (A-Z)</option>
+            <option value="descdate">Date (Z-A)</option>
+            <option value="ascdescription">Description (A-Z)</option>
+            <option value="descdescription">Description (Z-A)</option>
+          </select>
+        </div>
+
+        {/* Category Buttons */}
+        <div className="d-flex justify-content-center pt-3">
+          <Button
+            variant={categoryFilter === "all" ? "primary" : "secondary"}
+            onClick={() => handleCategoryChange("all")}
+          >
+            All
+          </Button>
+          <Button
+            variant={categoryFilter === "veg" ? "primary" : "secondary"}
+            onClick={() => handleCategoryChange("veg")}
+            className="ms-2"
+          >
+            Veg
+          </Button>
+          <Button
+            variant={categoryFilter === "non-veg" ? "primary" : "secondary"}
+            onClick={() => handleCategoryChange("non-veg")}
+            className="ms-2"
+          >
+            Non-Veg
+          </Button>
+        </div>
+
+        <Container>
+          <div className="d-flex flex-wrap gap-3">
+            {filteredRecipes.length === 0 ? (
+              <p>No recipes found</p>
+            ) : (
+              filteredRecipes.map((recipe) => (
+                <Card className="border-0 my-5" key={recipe.id} style={{ width: "18rem" }}>
+                  <Card.Img src={recipe.imageUrl} width={100} height={200} />
+                  <Card.Body className="text-start">
+                    <h2>{recipe.title}</h2>
+                    <Card.Text>{recipe.author}</Card.Text>
+                    <span className="category">{recipe.category}</span>
+                    <Card.Text className="pt-3">{recipe.date}</Card.Text>
+                    <Card.Text className="truncated-description">
+                      {recipe.description}
+                    </Card.Text>
+                    <div className="text-center d-flex justify-content-around">
+                      <button onClick={() => handleEdit(recipe.id)}>
+                        <FaEdit />
+                      </button>
+                      <button className="me-3" onClick={() => handleDelete(recipe.id)}>
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              ))
+            )}
+          </div>
+        </Container>
+      </div>
+    </>
+  );
+};
+
+export default Recipe;

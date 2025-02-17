@@ -1,0 +1,347 @@
+a{
+  text-decoration: none !important;
+  display: inline-block;
+  color: white !important;
+  padding: 0;
+}
+body{
+  overflow-x: hidden;
+  /* font-family: "Mulish", serif; */
+  font-family: "Montserrat", sans-serif;
+}
+li{
+  list-style:none;
+  color: black;
+}
+.p-t-100{
+  padding-top: 80px;
+}
+ul{
+  margin-bottom: 0;
+  padding-left: 0;
+}
+.header{
+  width: 100%;
+  /* height: 70px; */
+  line-height: 70px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 5px 15px #0000000f;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin-top: 0;
+  background-color: #FEF6E4;
+}
+.banner{
+  background-color: #FEF6E4;
+  width: 100%;
+  /* height: 890px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.addrecipe{
+  background: url('https://thumbs.dreamstime.com/b/staple-foods-recipe-book-space-text-fruit-fish-bread-vegetables-blank-pages-53668614.jpg');
+  /* background-color: #F582AE; */
+  width: 100%;
+  height: 950px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  position: relative;
+}
+.addrecipe form{
+  background-color:  rgba(3, 81, 4, 0.7);
+  width: 590px;
+  border-radius: 5px;
+  padding: 20px 20px;
+  position: absolute;
+  backdrop-filter: blur(10px); 
+  top: 18%;
+  left: 30%;
+}
+.addrecipe button{
+  background-color: rgb(3, 81, 4) !important;
+  border: 1px solid rgb(3, 81, 4) !important;
+  color: white !important;
+}
+.addrecipe button:hover{
+  background-color: transparent !important;
+  border: 1px solid rgb(3, 81, 4) !important;
+  color: white !important;
+}
+.addrecipe button ,.banner button ,.banner .category{
+  padding: 8px 25px;
+  font-weight: 600;
+  background-color: #F582AE;
+  border: 1px solid #F582AE;
+  color: #021958;
+  border-radius: 999px;
+  transition: all 0.3s ease-in-out;
+}
+.banner .category{
+  border-radius: 5px;
+}
+.truncated-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;  /* Limits the text to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.banner .category,.banner button{
+   background-color: #F582AE;
+   color: #021958;
+}
+.banner button:hover{
+  background-color: #021958 !important;
+  border: 1px solid #021958 !important;
+  color: #F582AE !important;
+}
+.btn button:hover{
+  background-color: #021958 !important;
+  color: #F582AE !important;
+}
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+/* LOGIN */
+.sign{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background: linear-gradient( #543721,#6b3b0e); */
+    background-position: left;
+    background-repeat: no-repeat;
+    /* transform: rotate(90deg); */
+    background-size: cover;
+    /* overflow: hidden; */
+}
+
+.wrapper {
+  position: relative;
+  width: 550px;
+  height: 690px;
+}
+.bg{
+  background-color: #FEF6E4;
+}
+.form-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.wrapper.animate-signUp .form-wrapper.sign-in {
+  transform: rotate(7deg);
+  animation: animateRotate .7s ease-in-out forwards;
+  animation-delay: .3s;
+}
+
+.wrapper.animate-signIn .form-wrapper.sign-in {
+  animation: animateSignIn 1.5s ease-in-out forwards;
+}
+
+@keyframes animateSignIn {
+  0% {
+      transform: translateX(0);
+  }
+
+  50% {
+      transform: translateX(-500px);
+  }
+
+  100% {
+      transform: translateX(0) rotate(7deg);
+  }
+}
+
+.wrapper .form-wrapper.sign-up {
+  transform: rotate(7deg);
+}
+
+.wrapper.animate-signIn .form-wrapper.sign-up {
+  animation: animateRotate .7s ease-in-out forwards;
+  animation-delay: .3s;
+}
+
+@keyframes animateRotate {
+  0% {
+      transform: rotate(7deg);
+  }
+
+  100% {
+      transform: rotate(0);
+      z-index: 1;
+  }
+}
+
+.wrapper.animate-signUp .form-wrapper.sign-up {
+  animation: animateSignUp 1.5s ease-in-out forwards;
+}
+
+@keyframes animateSignUp {
+  0% {
+      transform: translateX(0);
+      z-index: 1;
+  }
+
+  50% {
+      transform: translateX(500px);
+  }
+
+  100% {
+      transform: translateX(0) rotate(7deg);
+  }
+}
+
+.sign h6 {
+  /* font-size: 25px; */
+  color: #011958;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  width: 380px;
+  margin: 30px 0;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #333;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-group input {
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  padding: 10px 30px;
+  border: 1px solid #333;
+  outline: none;
+  border-radius:999px !important;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+  top: 0;
+  font-size: 12px;
+  background: #fff;
+}
+
+.forgot-pass {
+  margin: -15px 0 15px;
+}
+
+.forgot-pass a {
+  color: #020202 !important;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot-pass a:hover {
+  text-decoration: underline !important;
+}
+
+.sign .btn ,.header .btn {
+  width: 150px;
+  height: 40px;
+  background-color: #fa78ac !important;
+  display: block;
+  /* background: linear-gradient(to right, #543721,#6b3b0e); */
+  font-size: 16px;
+  color: #fff !important;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #fa78ac;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  transition: all 0.5s linear;
+}
+.sign .btn:hover{
+  color:#fa78ac ;
+  border: 1px solid #fa78ac;
+  background-color: transparent;
+}
+
+.sign-link {
+  font-size: 14px;
+  text-align: center;
+  margin: 25px 0;
+}
+
+.sign-link p {
+  color: #333;
+}
+
+.sign-link p a {
+  color: #ed94b8 !important;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sign-link p a:hover {
+  text-decoration: underline !important;
+}
+
+
+.singleBook{
+  background-image: url('./assets/4.jpg');
+  width: 100%;
+  height: 850px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+.singleBook .book-details{
+  background-color: rgba(164, 110, 68, 0.444);
+  width: 600px;
+  /* margin-top: 20px; */
+  border-radius: 5px;
+  padding: 20px 20px;
+  backdrop-filter: blur(10px);
+}
+.book-image {
+  position: relative; 
+  width: 100%; 
+  height: 350px; 
+  overflow: hidden; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+.book-image img {
+  width: 100%;         
+  height: 100%;        
+  object-fit: cover;  
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.book-image:hover img {
+  transform: scale(1.1) rotate(1.5deg);;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
