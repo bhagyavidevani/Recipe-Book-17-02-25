@@ -6,7 +6,6 @@ import AddRecipe from './componet/AddRecipe'
 import Login from './componet/Auth/Login'
 import SingalPage from './componet/SingalPage'
 import Recipe from './componet/Recipe'
-import Footer from './componet/Footer'
 import EditRecipe from './componet/EditRecipe'
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path='/singalPage/:id' element={<SingalPage/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>
-      <Footer/>
     </>
   )
 }

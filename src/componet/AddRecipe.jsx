@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import {addRecipeAsync } from "../Services/Action/Recipeaction";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 function AddRecipe() {
@@ -226,6 +227,7 @@ function AddRecipe() {
             </Form>
           </Container>
        </div>
+      <Footer/>
     </div>
   )
 }

@@ -27,23 +27,23 @@ const logoutSuccess = () => {
 const loginSuccess = (user) => {
   return {
     type: "LOGIN_SUC",
-    payload: user
+    payload: user,
   };
 };
 
-const loginSuc=(user)=>{
-  return{
-    type:"LOGIN_SUC",
-    payload:user
-  }
-}
+const loginSuc = (user) => {
+  return {
+    type: "LOGIN_SUC",
+    payload: user,
+  };
+};
 
-const loginFail=(msg)=>{
-   return{
-    type:"LOGIN_FAIL",
-    payload:msg
-   }
-}
+const loginFail = (msg) => {
+  return {
+    type: "LOGIN_FAIL",
+    payload: msg,
+  };
+};
 
 export const loginUserAsync = (data) => {
   return async (dispatch) => {
@@ -81,14 +81,12 @@ export const addNewUserAsync = (data) => {
   };
 };
 
-
 export const logOutAsync = () => {
-  return async dispatch => {
-    await signOut(auth)
-    dispatch(logoutSuccess())
-  }
-}
-
+  return async (dispatch) => {
+    await signOut(auth);
+    dispatch(logoutSuccess());
+  };
+};
 
 export const googleLoginAsync = () => {
   return async (dispatch) => {
@@ -99,10 +97,10 @@ export const googleLoginAsync = () => {
       let user = userRef.user;
       console.log('Google login successful:', user);
       user.id = userRef.uid;
-      dispatch(loginSuc(user));  // You dispatch the success action here
+      dispatch(loginSuc(user)); // You dispatch the success action here
     } catch (error) {
       console.error('Google login failed:', error);
-      dispatch(loginFail(error.message));  // You dispatch the failure action here
+      dispatch(loginFail(error.message)); // You dispatch the failure action here
     }
-  }
+  };
 };

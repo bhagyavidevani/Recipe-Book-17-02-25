@@ -10,6 +10,7 @@ import spices from "../assets/spices.png"
 import spice1 from "../assets/spice1.png"
 import spice2 from "../assets/spice2.png"
 import { useNavigate } from "react-router";
+import Footer from "./Footer";
 
 
 function Home() {
@@ -66,6 +67,7 @@ function Home() {
        </Container>
         
       </div>
+      <Footer/>
     </div>
   )
 }

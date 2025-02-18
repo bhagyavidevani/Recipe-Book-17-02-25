@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { singleRecipeAsync } from '../Services/Action/Recipeaction';
 import Header from './Header';
 import { Container } from 'react-bootstrap';
+import Footer from './Footer';
 
 const SingalPage = () => {
   const { id } = useParams(); 
@@ -47,6 +48,7 @@ const SingalPage = () => {
           <p>Loading...</p>
         )}
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import {singleRecipeAsync, updateRecipeAsync } from '../Services/Action/Recipeaction';
 import Header from './Header';
+import Footer from './Footer';
 
 function EditRecipe() {
     const { id } = useParams();
@@ -197,6 +198,7 @@ function EditRecipe() {
             </Form>
           </Container>
        </div>
+      <Footer/>
     </div>
   )
 }

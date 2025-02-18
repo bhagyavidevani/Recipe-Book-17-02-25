@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { Button, Card, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Recipe = () => {
   const [searchVal, setSearchVal] = useState("");
@@ -168,6 +169,7 @@ const Recipe = () => {
           </div>
         </Container>
       </div>
+      <Footer/>
     </>
   );
 };
