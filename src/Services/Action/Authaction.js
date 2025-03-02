@@ -97,10 +97,10 @@ export const googleLoginAsync = () => {
       let user = userRef.user;
       console.log('Google login successful:', user);
       user.id = userRef.uid;
-      dispatch(loginSuc(user)); // You dispatch the success action here
+      dispatch(loginSuc(user)); 
     } catch (error) {
       console.error('Google login failed:', error);
-      dispatch(loginFail(error.message)); // You dispatch the failure action here
+      dispatch(loginFail(error.message)); 
     }
   };
 };
