@@ -33,7 +33,7 @@ function Header(background) {
                           {user ? <li className="">
                             <div className="nav-item">
                               <div className="category-hover d-flex align-items-center">
-                              <a href="/AddBook" className="fs-5 fw-semibold text-black">
+                              <a href="/AddRecipe" className="fs-5 fw-semibold text-black">
                                 AddRecipe
                               </a>
                               </div>

@@ -9,13 +9,13 @@ import Recipe from './componet/Recipe'
 import EditRecipe from './componet/EditRecipe'
 
 function App() {
-
+  
   return (
     <>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/recipe' element={<Recipe/>}/>
-        <Route path='/AddBook' element={<AddRecipe/>}/>
+        <Route path='/AddRecipe' element={<AddRecipe/>}/>
         <Route path='/edit/:id' element={<EditRecipe/>}/>
         <Route path='/singalPage/:id' element={<SingalPage/>}/>
         <Route path='/login' element={<Login/>}/>

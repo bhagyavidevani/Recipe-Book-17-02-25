@@ -58,8 +58,13 @@ function AddRecipe() {
         break;
     }
     return error;
-  };
-
+  };  
+  const { user } = useSelector((state) => state.AuthReduces);
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user]);
 
   const handelChanged = (e) => {
     const { name, value } = e.target;
