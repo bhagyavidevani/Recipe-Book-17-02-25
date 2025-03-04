@@ -1,11 +1,11 @@
 import {
   createUserWithEmailAndPassword,
+  getAuth,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { auth } from "../../config/firebaseConfig";
-import { GoogleAuthProvider } from "firebase/auth/web-extension";
+import { GoogleAuthProvider ,signInWithPopup} from "firebase/auth";
 
 const SignUpFailed = (msg) => {
   return {
@@ -34,14 +34,14 @@ const loginSuccess = (user) => {
 const loginSuc = (user) => {
   return {
     type: "LOGIN_SUC",
-    payload: user,
+    payload: user
   };
 };
 
 const loginFail = (msg) => {
   return {
     type: "LOGIN_FAIL",
-    payload: msg,
+    payload: msg
   };
 };
 
@@ -91,12 +91,13 @@ export const logOutAsync = () => {
 export const googleLoginAsync = () => {
   return async (dispatch) => {
     try {
+      const auth =getAuth();
       let provider = new GoogleAuthProvider();
       console.log('Starting Google login...');
-      let userRef = await signInWithPopup(auth, provider);
-      let user = userRef.user;
+      const userRef = await signInWithPopup(auth, provider);
+      const user = userRef.user;
       console.log('Google login successful:', user);
-      user.id = userRef.uid;
+      user.id = user.uid;
       dispatch(loginSuc(user)); 
     } catch (error) {
       console.error('Google login failed:', error);
