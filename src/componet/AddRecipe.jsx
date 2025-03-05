@@ -21,7 +21,7 @@ function AddRecipe() {
     description: "",
     category: "",
     date:"",
-    author:""
+    Cook:""
   });
 
   const handleImageUrlChange = (e) => {
@@ -38,8 +38,8 @@ function AddRecipe() {
         case "date":
         if (!value) error = "* Date is required";
         break;
-        case "author":
-        if (!value) error = "* author is required";
+        case "Cook":
+        if (!value) error = "* Cook is required";
         break;
       case "category":
         if (!value) error = "*category  is required";
@@ -154,19 +154,19 @@ function AddRecipe() {
 
             <Form.Group as={Row} className="mb-4">
                 <Form.Label column sm="3" style={{color:'#fff'}}>
-                  Recipe Author :-
+                  Recipe Cook :-
                 </Form.Label>
                 <Col sm="9">
                   <Form.Control
                     type="text"
-                    placeholder="Enter Recipe Author"
-                    name="author"
-                    value={recipeinput.author}
+                    placeholder="Enter Recipe Cook"
+                    name="Cook"
+                    value={recipeinput.Cook}
                     onChange={handelChanged}
                     width={"50px"}
                     />
                 </Col>
-                    {errors.author && <i style={{ color: "red" }}>{errors.author}</i>}
+                    {errors.Cook && <i style={{ color: "red" }}>{errors.Cook}</i>}
             </Form.Group>
 
             <Form.Group as={Row} className="mb-4 d-flex justify-content-center align-items-center">

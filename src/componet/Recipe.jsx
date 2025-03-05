@@ -9,7 +9,7 @@ import Footer from "./Footer";
 
 const Recipe = () => {
   const [searchVal, setSearchVal] = useState("");
-  const [sortOption, setSortOption] = useState("all");
+  const [sortOption] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const dispatch = useDispatch();
@@ -38,7 +38,8 @@ const Recipe = () => {
           recipe.title.toLowerCase().includes(searchVal.toLowerCase()) ||
           recipe.date.toLowerCase().includes(searchVal.toLowerCase()) ||
           recipe.description.toLowerCase().includes(searchVal.toLowerCase()) ||
-          recipe.category .toLowerCase().includes(searchVal.toLowerCase())
+          recipe.category .toLowerCase().includes(searchVal.toLowerCase()) ||
+          recipe.Cook.toLowerCase().includes(searchVal.toLowerCase())
         );
       });
     }
@@ -90,31 +91,15 @@ const Recipe = () => {
             type="text"
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
-            className="rounded-0"
+            className="rounded-start border px-5"
             placeholder="Search recipes"
+            width={'50px'}
           />
-          <Button onClick={() => setSearchVal(searchVal)} className="rounded-0">
+          <Button onClick={() => setSearchVal(searchVal)} className="rounded">
             <FaSearch />
           </Button>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <select
-            className="form-select w-25"
-            onChange={(e) => {
-              setSortOption(e.target.value);
-            }}
-            value={sortOption}
-          >
-            <option value="all">All</option>
-            <option value="asctitle">Title (A-Z)</option>
-            <option value="desctitle">Title (Z-A)</option>
-            <option value="ascdate">Date (A-Z)</option>
-            <option value="descdate">Date (Z-A)</option>
-            <option value="ascdescription">Description (A-Z)</option>
-            <option value="descdescription">Description (Z-A)</option>
-          </select>
-        </div>
-
-        {/* Category Buttons */}
+           {/* Category Buttons */}
         <div className="d-flex justify-content-center pt-3">
           <Button
             variant={categoryFilter === "all" ? "primary" : "secondary"}
@@ -137,6 +122,9 @@ const Recipe = () => {
             Non-Veg
           </Button>
         </div>
+        </div>
+
+       
 
         <Container>
           <div className="d-flex flex-wrap gap-3">
@@ -148,7 +136,7 @@ const Recipe = () => {
                   <Card.Img src={recipe.imageUrl} width={100} height={200} />
                   <Card.Body className="text-start">
                     <h2>{recipe.title}</h2>
-                    <Card.Text>{recipe.author}</Card.Text>
+                    <Card.Text>{recipe.Cook}</Card.Text>
                     <span className="category">{recipe.category}</span>
                     <Card.Text className="pt-3">{recipe.date}</Card.Text>
                     <Card.Text className="truncated-description">
