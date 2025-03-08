@@ -74,7 +74,6 @@ export const addNewUserAsync = (data) => {
         dispatch(SignUpFailed("Already SignUp, Please Login !!!"));
       } else {
         console.log("Firebase Failed else");
-
         dispatch(SignUpFailed(error.message));
       }
     }

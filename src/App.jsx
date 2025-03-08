@@ -31,10 +31,10 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={user? <Home/>:<Login/>}/>
-        <Route path='/recipe' element={<Recipe/>}/>
-        <Route path='/AddRecipe' element={<AddRecipe/>}/>
-        <Route path='/edit/:id' element={<EditRecipe/>}/>
-        <Route path='/singalPage/:id' element={<SingalPage/>}/>
+        <Route path='/recipe' element={user?<Recipe/>:<Login/>}/>
+        <Route path='/AddRecipe' element={user?<AddRecipe/>:<Login/>}/>
+        <Route path='/edit/:id' element={user?<EditRecipe/>:<Login/>}/>
+        <Route path='/singalPage/:id' element={user?<SingalPage/>:<Login/>}/>
         <Route path='/login' element={<Login/>}/>
       </Routes>
     </>
