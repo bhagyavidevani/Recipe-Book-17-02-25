@@ -38,8 +38,7 @@ const Recipe = () => {
           recipe.title.toLowerCase().includes(searchVal.toLowerCase()) ||
           recipe.date.toLowerCase().includes(searchVal.toLowerCase()) ||
           recipe.description.toLowerCase().includes(searchVal.toLowerCase()) ||
-          recipe.category .toLowerCase().includes(searchVal.toLowerCase()) ||
-          recipe.Cook.toLowerCase().includes(searchVal.toLowerCase())
+          recipe.category .toLowerCase().includes(searchVal.toLowerCase())
         );
       });
     }
@@ -136,7 +135,7 @@ const Recipe = () => {
                   <Card.Img src={recipe.imageUrl} width={100} height={200} />
                   <Card.Body className="text-start">
                     <h2>{recipe.title}</h2>
-                    <Card.Text>{recipe.Cook}</Card.Text>
+                    <Card.Text>{recipe.chef}</Card.Text>
                     <span className="category">{recipe.category}</span>
                     <Card.Text className="pt-3">{recipe.date}</Card.Text>
                     <Card.Text className="truncated-description">
