@@ -8,24 +8,8 @@ import SingalPage from './componet/SingalPage'
 import Recipe from './componet/Recipe'
 import EditRecipe from './componet/EditRecipe'
 import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from './config/firebaseConfig'
 
 function App() {
-  const [ setUser] = useState(null);
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      if (!currentUser && location.pathname !== "/login") {
-        navigate("/login"); 
-      }
-    });
-    return () => unsubscribe();
-  }, [navigate, location.pathname]);
   const { user } = useSelector((state) => state.AuthReduces);
   return (
     <>
